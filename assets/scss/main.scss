@@ -1,0 +1,166 @@
+// variables
+$white-text: white;
+$blue-text: #60a4fc;
+$text-hovered: #b2b7bd;
+
+$bg-primary: #60a4fc;
+$bg-secondary: white;
+$bg-hovered: #c3c8ce;
+
+$base-border: 1px solid black;
+
+// mobile (base) layout
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+nav {
+    background-color: $bg-primary;
+    padding: 10px 0 0 0;
+    margin: 0;
+}
+
+.menu {
+    max-width: 1230px;
+    min-width: 320px;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+        display: block;
+        color: $blue-text;
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 15px 15px;
+        border-bottom: $base-border;
+        background-color: $bg-secondary;
+
+        &:hover{
+            background-color: $bg-hovered;
+            transition: 1s background-color;
+        }
+    }
+}
+
+.logo {
+    margin: 0 5px 5px 5px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.burger {
+    order: 1;
+    padding-right: 15px;
+    margin-bottom: 5px;
+}
+
+.items {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    order: 2;
+    width: 100%;
+}
+
+.active {
+    .items {
+        max-height: 600px;
+        opacity: 1;
+        transition: 1s max-height, 1s opacity ease-out;
+    }
+}
+
+
+/* Tablet display */
+
+@media (min-width: 641px) {
+
+    .logo {
+        margin: 0 0 5px 5px;
+    }
+
+    .items {
+        display: flex;
+        overflow: visible;
+        max-height: 600px;
+        max-width: 200px;
+        order: 1;
+        opacity: 1;
+        gap: 20%;
+        /* keep 20 */
+        margin: 0 20% 0 0;
+        justify-content: space-between;
+
+        .item {
+            width: 10%;
+        }
+    }
+
+    .menu {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        align-items: center;
+
+        a {
+            display: block;
+            width: auto;
+            color: $white-text;
+            font-weight: bold;
+            font-size: large;
+            text-decoration: none;
+            text-transform: uppercase;
+            background-color: $bg-primary;
+            border: none;
+
+            &:hover {
+                background-color: $bg-primary;
+            }
+        }
+
+        .burger {
+            visibility: hidden;
+            order: 2;
+            width: 100px;
+        }
+    }
+
+    
+}
+
+@media (min-width: 1230px) {
+    nav {
+        margin: 0 10%;
+    }
+
+    .items {
+        justify-content: space-around;
+        max-width: 300px;
+        gap: 0;
+
+        .item {
+            width: 100px;
+        }
+    }
+
+    .menu {
+        a {
+            &:hover {
+                color: $text-hovered;
+                transition: 0.5s color ease-out;
+            }
+        }
+    }
+}
